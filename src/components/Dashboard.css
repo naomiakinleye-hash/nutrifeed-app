@@ -1,0 +1,100 @@
+/* DASHBOARD CONTAINER */
+.dashboard {
+  padding: 50px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dashboard h2 {
+  font-size: 2rem;
+  color: #2e7d32;
+  margin-bottom: 8px;
+}
+
+.dashboard-subtitle {
+  color: #777;
+  margin-bottom: 30px;
+  font-size: 1rem;
+}
+
+/* METRIC CARDS */
+.metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.metric-card {
+  background-color: #f1f8e9;
+  border: 2px solid #a5d6a7;
+  border-radius: 12px;
+  padding: 25px 20px;
+  width: 180px;
+}
+
+.metric-card h3 {
+  font-size: 1rem;
+  color: #1b5e20;
+  margin-bottom: 10px;
+}
+
+.metric-number {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #2e7d32;
+  margin-bottom: 5px;
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* ALERTS */
+.alerts {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.alerts h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.alert {
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.alert-green {
+  background-color: #e8f5e9;
+  border-left: 5px solid #2e7d32;
+  color: #1b5e20;
+}
+
+.alert-yellow {
+  background-color: #fffde7;
+  border-left: 5px solid #f9a825;
+  color: #795548;
+}
+
+.alert-red {
+  background-color: #ffebee;
+  border-left: 5px solid #c62828;
+  color: #b71c1c;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .metrics {
+    flex-direction: column;
+    align-items: center;
+  }
+}

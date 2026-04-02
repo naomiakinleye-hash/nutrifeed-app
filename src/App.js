@@ -1,4 +1,6 @@
 import './App.css';
+import './App.css';
+import Dashboard from './components/Dashboard';
 
 function App() {
   return (
@@ -50,6 +52,11 @@ function App() {
         <button className="cta-button">Get Started Today</button>
       </section>
 
+{/* DASHBOARD */}
+      <Dashboard />
+
+      {/* FOOTER */}
+      
       {/* FOOTER */}
       <footer className="footer">
         <p>© 2026 BSF-Nutrifeed | DSHub Internship Program</p>
