@@ -1,0 +1,85 @@
+/* FORM CONTAINER */
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.form-container h2 {
+  font-size: 1.8rem;
+  color: #2e7d32;
+  margin-bottom: 8px;
+}
+
+.form-subtitle {
+  color: #777;
+  margin-bottom: 30px;
+}
+
+/* FORM GROUPS */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #a5d6a7;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #2e7d32;
+}
+
+/* ERROR MESSAGES */
+.error {
+  color: #c62828;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* SUBMIT BUTTON */
+.submit-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #2e7d32;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.submit-button:hover {
+  background-color: #1b5e20;
+}
+
+/* SUCCESS MESSAGE */
+.success-message {
+  background-color: #e8f5e9;
+  border: 2px solid #a5d6a7;
+  border-radius: 12px;
+  padding: 40px;
+}
+
+.success-message h2 {
+  margin-bottom: 15px;
+}
+
+.success-message p {
+  margin-bottom: 10px;
+  color: #555;
+}

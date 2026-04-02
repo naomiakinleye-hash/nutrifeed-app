@@ -1,6 +1,7 @@
 import './App.css';
 import './App.css';
 import Dashboard from './components/Dashboard';
+import FarmForm from './components/FarmForm';
 
 function App() {
   return (
@@ -54,7 +55,11 @@ function App() {
 
 {/* DASHBOARD */}
       <Dashboard />
+{/* DASHBOARD */}
+      <Dashboard />
 
+      {/* FARM FORM */}
+      <FarmForm />
       {/* FOOTER */}
       
       {/* FOOTER */}
