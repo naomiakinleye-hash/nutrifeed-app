@@ -1,7 +1,7 @@
 import './App.css';
-import './App.css';
 import Dashboard from './components/Dashboard';
 import FarmForm from './components/FarmForm';
+import ProductList from './components/ProductList';
 
 function App() {
   return (
@@ -53,15 +53,15 @@ function App() {
         <button className="cta-button">Get Started Today</button>
       </section>
 
-{/* DASHBOARD */}
+      {/* DASHBOARD */}
       <Dashboard />
-{/* DASHBOARD */}
-      <Dashboard />
+
+      {/* PRODUCT LIST */}
+      <ProductList />
 
       {/* FARM FORM */}
       <FarmForm />
-      {/* FOOTER */}
-      
+
       {/* FOOTER */}
       <footer className="footer">
         <p>© 2026 BSF-Nutrifeed | DSHub Internship Program</p>
