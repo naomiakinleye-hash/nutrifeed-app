@@ -45,11 +45,20 @@ a {
   color: inherit;
 }
 
-/* ─── HERO ─────────────────────────────────── */
 .hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 80px 60px;
   background-color: var(--cream-section);
-  padding: 100px 40px 80px;
-  text-align: center;
+  flex-wrap: wrap;
+}
+
+.hero-content {
+  flex: 1;
+  min-width: 280px;
+  max-width: 520px;
 }
 
 .hero h1 {
@@ -85,7 +94,6 @@ a {
   background-color: var(--green-dark);
 }
 
-/* ─── GENERIC SECTION ───────────────────────── */
 .section {
   padding: 80px 40px;
   max-width: 760px;
@@ -98,7 +106,6 @@ a {
   margin-bottom: 16px;
 }
 
-/* ─── EDU SECTION ───────────────────────────── */
 .edu-section {
   background-color: var(--cream-section);
   padding: 80px 40px;
@@ -140,7 +147,6 @@ a {
   color: var(--green-mid);
 }
 
-/* ─── BENEFITS ──────────────────────────────── */
 .benefits {
   padding: 80px 40px;
   text-align: center;
@@ -180,7 +186,6 @@ a {
   color: var(--green-mid);
 }
 
-/* ─── CTA ───────────────────────────────────── */
 .cta {
   background-color: var(--green-dark);
   padding: 80px 40px;
@@ -214,7 +219,6 @@ a {
   opacity: 0.85;
 }
 
-/* ─── RESPONSIVE ────────────────────────────── */
 @media (max-width: 600px) {
   .hero h1 {
     font-size: 2rem;
