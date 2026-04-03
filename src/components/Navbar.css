@@ -1,0 +1,64 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #FCF6E3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 64px;
+  box-shadow: 0 1px 0 #DACDAA;
+}
+
+.navbar-brand {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #496218;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+
+.nav-link {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #B2A170;
+  text-decoration: none;
+  letter-spacing: 0.4px;
+  transition: color 0.15s ease;
+}
+
+.nav-link:hover {
+  color: #496218;
+}
+
+.nav-link.active {
+  color: #496218;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0 20px;
+    flex-wrap: wrap;
+    height: auto;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    gap: 10px;
+  }
+  .navbar-links {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .nav-link {
+    font-size: 0.82rem;
+  }
+}

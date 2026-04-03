@@ -7,49 +7,60 @@ function App() {
   return (
     <div className="App">
 
-      {/* HEADER */}
-      <header className="header">
-        <h1>🌱 BSF-Nutrifeed</h1>
-        <p>Sustainable Poultry Feed for Healthier Farms</p>
-      </header>
+      {/* NAVBAR */}
+      <nav className="navbar">
+        <span className="navbar-brand">BSF NutriFeed</span>
+      </nav>
+
+      {/* HERO SECTION */}
+      <section className="hero">
+        <h1>Smarter Feed. Healthier Farms.</h1>
+        <p>
+          BSF NutriFeed is an affordable, sustainable poultry feed
+          made from Black Soldier Fly larvae — helping Nigerian farmers
+          grow healthier livestock for less.
+        </p>
+        <button className="hero-button">Track Your Feed</button>
+      </section>
 
       {/* PRODUCT OVERVIEW */}
       <section className="section">
-        <h2>What is BSF-Nutrifeed?</h2>
+        <h2>What is BSF NutriFeed?</h2>
         <p>
-          BSF-Nutrifeed is an affordable, sustainable, and highly nutritious
-          poultry feed made from Black Soldier Fly larvae. It helps farmers
-          grow healthier chickens while protecting our environment.
+          Developed in response to the growing feed crisis across Nigeria,
+          BSF NutriFeed converts organic waste into high-protein livestock
+          feed. It costs less than traditional feed, performs better, and
+          is built for farmers who need results they can trust.
         </p>
       </section>
 
-      {/* KEY BENEFITS */}
-      <section className="section benefits">
-        <h2>Why Choose BSF-Nutrifeed?</h2>
-        <div className="cards">
+      {/* BENEFITS */}
+      <div className="benefits">
+        <h2>Why Choose BSF NutriFeed</h2>
+        <div className="benefits-grid">
 
-          <div className="card">
-            <h3>💰 Affordable</h3>
-            <p>Costs less than traditional feed, saving farmers money every month.</p>
+          <div className="benefit-card">
+            <h3>Affordable</h3>
+            <p>Significantly cheaper than conventional feed — reducing your monthly costs.</p>
           </div>
 
-          <div className="card">
-            <h3>🌍 Sustainable</h3>
-            <p>Made from organic waste, reducing environmental pollution.</p>
+          <div className="benefit-card">
+            <h3>Sustainable</h3>
+            <p>Made from organic waste, reducing environmental impact on your community.</p>
           </div>
 
-          <div className="card">
-            <h3>🐔 Nutritious</h3>
-            <p>High in protein — helps poultry grow faster and stay healthier.</p>
+          <div className="benefit-card">
+            <h3>Nutritious</h3>
+            <p>High protein content that supports faster growth and healthier livestock.</p>
           </div>
 
         </div>
-      </section>
+      </div>
 
       {/* CALL TO ACTION */}
       <section className="cta">
         <h2>Ready to Transform Your Farm?</h2>
-        <p>Join hundreds of farmers already using BSF-Nutrifeed.</p>
+        <p>Join farmers across Nigeria already using BSF NutriFeed.</p>
         <button className="cta-button">Get Started Today</button>
       </section>
 
@@ -64,7 +75,7 @@ function App() {
 
       {/* FOOTER */}
       <footer className="footer">
-        <p>© 2026 BSF-Nutrifeed | DSHub Internship Program</p>
+        <p>© 2026 BSF NutriFeed | DSHub Internship Program</p>
       </footer>
 
     </div>
