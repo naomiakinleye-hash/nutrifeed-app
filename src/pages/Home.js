@@ -31,12 +31,13 @@ function Home() {
 
       {/* WHAT IS BSF */}
       <section className="section">
-        <h2>What is BSF NutriFeed?</h2>
+        <p className="section-tag">The Feed Crisis Has a Solution</p>
+        <h2>Stop Wasting Money on Overpriced Feed</h2>
         <p>
-          Developed in response to the growing feed crisis across Nigeria,
-          BSF NutriFeed converts organic waste into high-protein livestock feed.
-          It costs less than traditional feed, performs better, and is built for
-          farmers who need results they can trust.
+          Since 2022, conventional feed prices in Nigeria have risen over 60%.
+          BSF NutriFeed was built as the direct answer — converting organic
+          waste into high-protein livestock feed that costs less, performs
+          better, and is produced locally.
         </p>
       </section>
 
