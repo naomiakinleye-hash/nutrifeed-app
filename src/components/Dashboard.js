@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
 
-// ── Mock API data ──────────────────────────────────────────────
 const MOCK_DATA = {
   metrics: [
     { id: 1, label: 'Feed Produced (kg)', value: '1,240', trend: '+8% this week' },
@@ -9,9 +9,17 @@ const MOCK_DATA = {
     { id: 3, label: 'Feed Cost Saved (₦)', value: '₦184,000', trend: 'vs. conventional' },
     { id: 4, label: 'Avg. Growth Rate', value: '94%', trend: '+3% vs last month' },
   ],
+  growth: [
+    { label: 'Average Weight Gain', value: '2.4 kg', note: 'Per bird this month' },
+    { label: 'Feed Efficiency Ratio', value: '1.8', note: 'Industry avg: 2.1' },
+    { label: 'Mortality Rate', value: '1.2%', note: 'Below 2% target' },
+    { label: 'Days to Market Weight', value: '38', note: 'Ahead of schedule' },
+  ],
   alerts: [
     { id: 1, type: 'warning', message: 'Starter stock running low — consider restocking within 5 days.' },
     { id: 2, type: 'info', message: 'Batch 3 birds entering Grower stage this week.' },
+    { id: 3, type: 'warning', message: 'Next feeding time: 8:00 AM tomorrow.' },
+    { id: 4, type: 'info', message: 'Weekly growth report ready for review.' },
   ],
   chartData: [
     { week: 'Wk 1', feedUsed: 180, feedProduced: 220 },
@@ -23,7 +31,6 @@ const MOCK_DATA = {
   ],
 };
 
-// ── Sub-components ─────────────────────────────────────────────
 function MetricCard({ label, value, trend }) {
   return (
     <div className="metric-card">
@@ -34,9 +41,18 @@ function MetricCard({ label, value, trend }) {
   );
 }
 
+function GrowthCard({ label, value, note }) {
+  return (
+    <div className="growth-card">
+      <p className="metric-label">{label}</p>
+      <p className="metric-value">{value}</p>
+      <p className="metric-trend">{note}</p>
+    </div>
+  );
+}
+
 function ChartCard({ data }) {
   const maxVal = Math.max(...data.flatMap(d => [d.feedUsed, d.feedProduced]));
-
   return (
     <div className="chart-card">
       <h3>Feed Production vs. Usage</h3>
@@ -81,13 +97,12 @@ function AlertBanner({ alerts }) {
   );
 }
 
-// ── Main Dashboard ─────────────────────────────────────────────
 function Dashboard() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Simulate API fetch
     const timer = setTimeout(() => {
       setData(MOCK_DATA);
       setLoading(false);
@@ -107,13 +122,29 @@ function Dashboard() {
     <div className="dashboard-page">
 
       <div className="dashboard-header">
-        <h1>Farm Dashboard</h1>
-        <p>Live overview of your BSF NutriFeed operation.</p>
+        <div>
+          <h1>Farm Dashboard</h1>
+          <p>Live overview of your BSF NutriFeed operation.</p>
+        </div>
+        <button
+          className="dashboard-cta"
+          onClick={() => navigate('/calculator')}
+        >
+          Update Feed Plan
+        </button>
       </div>
 
+      <div className="dashboard-section-title">Feed Metrics</div>
       <div className="metrics-grid">
         {data.metrics.map(m => (
           <MetricCard key={m.id} label={m.label} value={m.value} trend={m.trend} />
+        ))}
+      </div>
+
+      <div className="dashboard-section-title">Animal Growth Indicators</div>
+      <div className="metrics-grid">
+        {data.growth.map((g, i) => (
+          <GrowthCard key={i} label={g.label} value={g.value} note={g.note} />
         ))}
       </div>
 
