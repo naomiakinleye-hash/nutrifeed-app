@@ -1,178 +1,225 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --green-primary: #6B8E23;
+  --green-dark: #496218;
+  --green-mid: #566316;
+  --cream-main: #FCF6E3;
+  --cream-section: #F7F3E8;
+  --cream-accent: #DACDAA;
+  --cream-muted: #B2A170;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: #FCF6E3;
-  padding: 20px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #DACDAA;
+body {
+  font-family: var(--font-body);
+  background-color: var(--cream-main);
+  color: var(--green-dark);
+  -webkit-font-smoothing: antialiased;
 }
 
-.navbar-brand {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #496218;
-  letter-spacing: 0.5px;
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--green-dark);
 }
 
+p {
+  line-height: 1.75;
+  color: var(--green-mid);
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ─── HERO ─────────────────────────────────── */
 .hero {
-  background-color: #F7F3E8;
-  padding: 80px 40px;
+  background-color: var(--cream-section);
+  padding: 100px 40px 80px;
   text-align: center;
 }
 
 .hero h1 {
-  font-size: 2.8rem;
-  color: #496218;
-  margin-bottom: 15px;
+  font-size: 3rem;
   font-weight: 700;
+  color: var(--green-dark);
+  max-width: 620px;
+  margin: 0 auto 20px;
+  line-height: 1.2;
 }
 
 .hero p {
-  font-size: 1.2rem;
-  color: #566316;
-  max-width: 600px;
-  margin: 0 auto 30px auto;
+  font-size: 1.1rem;
+  max-width: 520px;
+  margin: 0 auto 36px;
+  color: var(--green-mid);
 }
 
 .hero-button {
-  background-color: #6B8E23;
-  color: #FCF6E3;
-  padding: 15px 40px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  display: inline-block;
+  padding: 15px 36px;
+  background-color: var(--green-primary);
+  color: var(--cream-main);
+  font-size: 0.95rem;
   font-weight: 600;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
 }
 
 .hero-button:hover {
-  background-color: #496218;
+  background-color: var(--green-dark);
 }
 
+/* ─── GENERIC SECTION ───────────────────────── */
 .section {
-  padding: 70px 40px;
-  max-width: 900px;
+  padding: 80px 40px;
+  max-width: 760px;
   margin: 0 auto;
   text-align: center;
 }
 
 .section h2 {
-  font-size: 1.6rem;
-  color: #496218;
-  margin-bottom: 15px;
-  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 16px;
 }
 
-.section p {
-  font-size: 1.1rem;
-  color: #566316;
-  line-height: 1.8;
+/* ─── EDU SECTION ───────────────────────────── */
+.edu-section {
+  background-color: var(--cream-section);
+  padding: 80px 40px;
 }
 
-.benefits {
-  background-color: #F7F3E8;
-  padding: 70px 40px;
+.edu-section h2 {
   text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 50px;
+  color: var(--green-dark);
+}
+
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.edu-card {
+  background-color: var(--cream-main);
+  padding: 36px 28px;
+  border-radius: 6px;
+}
+
+.edu-card h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--green-dark);
+  margin-bottom: 12px;
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.edu-card p {
+  font-size: 0.95rem;
+  color: var(--green-mid);
+}
+
+/* ─── BENEFITS ──────────────────────────────── */
+.benefits {
+  padding: 80px 40px;
+  text-align: center;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .benefits h2 {
-  font-size: 1.6rem;
-  color: #496218;
-  margin-bottom: 40px;
-  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 50px;
 }
 
 .benefits-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
 }
 
 .benefit-card {
-  background-color: #6B8E23;
-  color: #FCF6E3;
-  padding: 35px 30px;
-  width: 220px;
-  border-radius: 8px;
+  padding: 36px 24px;
+  background-color: var(--cream-section);
+  border-radius: 6px;
 }
 
 .benefit-card h3 {
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 2px;
   text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--green-primary);
+  font-family: var(--font-body);
+  margin-bottom: 12px;
 }
 
 .benefit-card p {
   font-size: 0.9rem;
-  margin-top: 10px;
-  opacity: 0.9;
-  line-height: 1.6;
+  color: var(--green-mid);
 }
 
+/* ─── CTA ───────────────────────────────────── */
 .cta {
-  background-color: #F7F3E8;
-  padding: 70px 40px;
+  background-color: var(--green-dark);
+  padding: 80px 40px;
   text-align: center;
 }
 
 .cta h2 {
-  font-size: 1.6rem;
-  color: #496218;
-  margin-bottom: 10px;
-  font-weight: 700;
+  font-size: 2rem;
+  color: var(--cream-main);
+  margin-bottom: 14px;
 }
 
 .cta p {
-  font-size: 1.1rem;
-  color: #566316;
-  margin-bottom: 25px;
+  color: var(--cream-accent);
+  margin-bottom: 32px;
+  font-size: 1rem;
 }
 
 .cta-button {
-  background-color: #6B8E23;
-  color: #FCF6E3;
   padding: 15px 40px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  background-color: var(--cream-main);
+  color: var(--green-dark);
+  font-size: 0.95rem;
   font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  transition: opacity 0.2s ease;
 }
 
 .cta-button:hover {
-  background-color: #496218;
+  opacity: 0.85;
 }
 
-.footer {
-  background-color: #496218;
-  color: #FCF6E3;
-  text-align: center;
-  padding: 30px;
-  font-size: 0.9rem;
-}
-
+/* ─── RESPONSIVE ────────────────────────────── */
 @media (max-width: 600px) {
   .hero h1 {
     font-size: 2rem;
   }
-
-  .benefits-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .navbar {
-    padding: 15px 20px;
+  .hero, .section, .edu-section, .benefits {
+    padding: 60px 20px;
   }
 }
