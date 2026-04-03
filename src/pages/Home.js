@@ -23,7 +23,7 @@ function Home() {
         </div>
         <div className="hero-image">
           <img
-            src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=600"
+            src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800"
             alt="Poultry farm"
           />
         </div>
@@ -81,7 +81,7 @@ function Home() {
             <div className="step-number">01</div>
             <div className="step-image">
               <img
-                src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=400"
+                src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600"
                 alt="Input farm data"
               />
             </div>
@@ -93,7 +93,7 @@ function Home() {
             <div className="step-number">02</div>
             <div className="step-image">
               <img
-                src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=400"
+                src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=600"
                 alt="Get feed recommendations"
               />
             </div>
@@ -105,7 +105,7 @@ function Home() {
             <div className="step-number">03</div>
             <div className="step-image">
               <img
-                src="https://images.unsplash.com/photo-1589927986089-35812388d1f4?w=400"
+                src="https://images.unsplash.com/photo-1589927986089-35812388d1f4?w=600"
                 alt="Track growth on dashboard"
               />
             </div>
@@ -130,20 +130,39 @@ function Home() {
 
       {/* BENEFITS */}
       <section className="benefits">
-        <h2>Why Choose BSF NutriFeed</h2>
+        <h2>Improve Poultry Health With Data-Driven Nutrition</h2>
         <div className="benefits-grid">
+
           <div className="benefit-card">
+            <img
+              src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=600"
+              alt="Affordable feed"
+              className="benefit-img"
+            />
             <h3>Affordable</h3>
             <p>Significantly cheaper than conventional feed — reducing your monthly costs.</p>
           </div>
+
           <div className="benefit-card">
+            <img
+              src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600"
+              alt="Sustainable farming"
+              className="benefit-img"
+            />
             <h3>Sustainable</h3>
             <p>Made from organic waste, reducing environmental impact on your community.</p>
           </div>
+
           <div className="benefit-card">
+            <img
+              src="https://images.unsplash.com/photo-1518492104633-130d0cc84637?w=600"
+              alt="Nutritious BSF feed"
+              className="benefit-img"
+            />
             <h3>Nutritious</h3>
-            <p>High protein content that supports faster growth and healthier livestock.</p>
+            <p>High protein content from BSF larvae that supports faster growth and healthier livestock.</p>
           </div>
+
         </div>
       </section>
 
