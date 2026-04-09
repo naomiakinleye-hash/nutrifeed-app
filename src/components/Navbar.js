@@ -1,5 +1,12 @@
+// Navbar.js — Updated for Week 3
+// Added: Login/Sign Up link when logged out, Profile link when logged in.
+// Auth state is mocked for now — will connect to Firebase in next phase.
+
 import { NavLink, useNavigate } from 'react-router-dom';
 import './Navbar.css';
+
+// Temporary mock — replace with Firebase auth state in next phase
+const IS_LOGGED_IN = false;
 
 function Navbar() {
   const navigate = useNavigate();
@@ -22,6 +29,16 @@ function Navbar() {
         <NavLink to="/learn" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
           Learn
         </NavLink>
+
+        {IS_LOGGED_IN ? (
+          <NavLink to="/profile" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
+            Profile
+          </NavLink>
+        ) : (
+          <NavLink to="/login" className={({ isActive }) => isActive ? 'nav-link nav-link--cta active' : 'nav-link nav-link--cta'}>
+            Log in
+          </NavLink>
+        )}
       </div>
     </nav>
   );

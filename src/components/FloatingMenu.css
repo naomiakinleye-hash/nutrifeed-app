@@ -1,0 +1,457 @@
+/* FloatingMenu.css */
+
+/* ── Floating button ─────────────────────────────────────────────────────── */
+.fm-wrapper {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.fm-button {
+  width: 48px;
+  height: 48px;
+  background-color: #496218;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 4px 16px rgba(73, 98, 24, 0.3);
+}
+
+.fm-button:hover {
+  background-color: #6B8E23;
+  transform: translateY(-1px);
+}
+
+.fm-button--open {
+  background-color: #6B8E23;
+}
+
+.fm-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: #FCF6E3;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+/* ── Pop-up menu ─────────────────────────────────────────────────────────── */
+.fm-popup {
+  background-color: #FCF6E3;
+  border: 1px solid #DACDAA;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(73, 98, 24, 0.18);
+  overflow: hidden;
+  min-width: 180px;
+  animation: fm-popup-rise 0.18s ease;
+}
+
+@keyframes fm-popup-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fm-popup-item {
+  width: 100%;
+  padding: 13px 20px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #496218;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #F7F3E8;
+}
+
+.fm-popup-item:last-child {
+  border-bottom: none;
+}
+
+.fm-popup-item:hover {
+  background-color: #F7F3E8;
+}
+
+/* Small dot used as icon placeholder in menu items */
+.fm-popup-icon {
+  width: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.fm-popup-icon span {
+  display: block;
+  width: 16px;
+  height: 2px;
+  background-color: #B2A170;
+  border-radius: 2px;
+}
+
+/* ── Backdrop ────────────────────────────────────────────────────────────── */
+.fm-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  background: transparent;
+}
+
+/* ── Panel ───────────────────────────────────────────────────────────────── */
+.fm-panel {
+  position: fixed;
+  bottom: 28px;
+  left: 88px;
+  width: 360px;
+  max-height: calc(100vh - 120px);
+  background-color: #FCF6E3;
+  border: 1px solid #DACDAA;
+  border-radius: 8px;
+  box-shadow: 0 8px 40px rgba(73, 98, 24, 0.18);
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  animation: fm-panel-rise 0.2s ease;
+  overflow: hidden;
+}
+
+@keyframes fm-panel-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fm-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid #DACDAA;
+  flex-shrink: 0;
+}
+
+.fm-panel-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #496218;
+  margin: 0;
+}
+
+.fm-panel-close {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #B2A170;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.fm-panel-close:hover {
+  color: #496218;
+  background-color: #F7F3E8;
+}
+
+.fm-panel-form {
+  padding: 20px 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ── Section label ── */
+.fm-panel-section {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #B2A170;
+  margin-bottom: 14px;
+  margin-top: 20px;
+}
+
+.fm-panel-section:first-child {
+  margin-top: 4px;
+}
+
+/* ── Fields — matches .form-group from FeedCalculator.css ── */
+.fm-field {
+  margin-bottom: 18px;
+}
+
+.fm-field label {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  color: #496218;
+  margin-bottom: 7px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.fm-field input,
+.fm-field select,
+.fm-field textarea {
+  width: 100%;
+  padding: 11px 14px;
+  background-color: #F7F3E8;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.92rem;
+  color: #496218;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: background-color 0.15s ease;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.fm-field input:focus,
+.fm-field select:focus,
+.fm-field textarea:focus {
+  background-color: #DACDAA;
+}
+
+.fm-field input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.fm-field-hint {
+  font-size: 0.78rem;
+  color: #B2A170;
+  margin-top: 5px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Actions ── */
+.fm-panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid #DACDAA;
+}
+
+.fm-btn {
+  padding: 11px 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.fm-btn--primary {
+  background-color: #6B8E23;
+  color: #FCF6E3;
+}
+
+.fm-btn--primary:hover {
+  background-color: #496218;
+}
+
+.fm-saved {
+  font-size: 0.85rem;
+  color: #6B8E23;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Settings rows ── */
+.fm-settings-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.fm-settings-text { flex: 1; }
+
+.fm-settings-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #496218;
+  margin-bottom: 3px;
+}
+
+.fm-settings-desc {
+  font-size: 0.78rem;
+  color: #B2A170;
+  line-height: 1.5;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.fm-settings-link-row {
+  margin-bottom: 12px;
+}
+
+.fm-settings-link {
+  background: none;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #6B8E23;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.fm-settings-link:hover { text-decoration: underline; }
+
+.fm-settings-link--danger { color: #9B2335; }
+
+/* ── Toggle switch — matches ConsentBanner.css ── */
+.fm-toggle-label {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.fm-toggle-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.fm-toggle-track {
+  position: absolute;
+  inset: 0;
+  background-color: #DACDAA;
+  border-radius: 24px;
+  transition: background-color 0.2s ease;
+}
+
+.fm-toggle-track::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  top: 3px;
+  background-color: #FCF6E3;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.fm-toggle-input:checked + .fm-toggle-track { background-color: #6B8E23; }
+.fm-toggle-input:checked + .fm-toggle-track::before { transform: translateX(20px); }
+
+/* ── Language panel ── */
+.fm-lang-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.fm-lang-btn {
+  background-color: #F7F3E8;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  padding: 16px 12px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.fm-lang-btn:hover { background-color: #DACDAA; }
+
+.fm-lang-btn--active {
+  border-color: #6B8E23;
+  background-color: #f0f5e0;
+}
+
+.fm-lang-code {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #496218;
+}
+
+.fm-lang-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  color: #B2A170;
+}
+
+.fm-lang-note {
+  font-size: 0.78rem;
+  color: #B2A170;
+  line-height: 1.6;
+  font-family: 'DM Sans', sans-serif;
+  margin-bottom: 16px;
+}
+
+/* ── Help submitted state ── */
+.fm-submitted {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.fm-submitted-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  color: #496218;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.fm-submitted-body {
+  font-size: 0.9rem;
+  color: #566316;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .fm-panel {
+    left: 16px;
+    right: 16px;
+    width: auto;
+    bottom: 90px;
+    max-height: 70vh;
+  }
+
+  .fm-wrapper {
+    bottom: 20px;
+    left: 20px;
+  }
+}
