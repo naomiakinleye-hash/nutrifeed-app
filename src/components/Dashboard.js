@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
+import TrustPanel from '../components/TrustPanel';
 import './Dashboard.css';
 
 function Dashboard() {
@@ -17,7 +18,7 @@ function Dashboard() {
         metrics: [
           { id: 1, label: t('dashboard.metric_feed_produced'), value: '1,240',    trend: t('dashboard.trend_week') },
           { id: 2, label: t('dashboard.metric_active_birds'),  value: user?.birdCount ? Number(user.birdCount).toLocaleString() : '—', trend: t('dashboard.trend_stable') },
-          { id: 3, label: t('dashboard.metric_cost_saved'),    value: '₦184,000', trend: t('dashboard.trend_vs_conventional') },
+          { id: 3, label: t('dashboard.metric_cost_saved'),    value: 'N184,000', trend: t('dashboard.trend_vs_conventional') },
           { id: 4, label: t('dashboard.metric_growth_rate'),   value: '94%',      trend: t('dashboard.trend_vs_last_month') },
         ],
         growth: [
@@ -47,16 +48,14 @@ function Dashboard() {
   }, [t, user]);
 
   if (loading) {
-    return (
-      <div className="dashboard-loading">
-        <p>{t('dashboard.loading')}</p>
-      </div>
-    );
+    return <div className="dashboard-loading"><p>{t('dashboard.loading')}</p></div>;
   }
 
   const farmTypeLabel = user?.farmType
     ? user.farmType.charAt(0).toUpperCase() + user.farmType.slice(1)
     : null;
+
+  const maxVal = Math.max(...data.chartData.flatMap(d => [d.feedUsed, d.feedProduced]));
 
   return (
     <div className="dashboard-page">
@@ -64,7 +63,6 @@ function Dashboard() {
       <div className="dashboard-header">
         <div>
           <h1>{t('dashboard.title')}</h1>
-          {/* Show the farmer's name and farm type from their account */}
           <p>
             {user?.name ? `${user.name} · ` : ''}
             {farmTypeLabel ? `${farmTypeLabel} farm · ` : ''}
@@ -99,7 +97,6 @@ function Dashboard() {
       </div>
 
       <div className="dashboard-lower">
-
         <div className="chart-card">
           <h3>{t('dashboard.chart_title')}</h3>
           <div className="chart-legend">
@@ -109,26 +106,15 @@ function Dashboard() {
             <span>{t('dashboard.chart_used')}</span>
           </div>
           <div className="bar-chart">
-            {data.chartData.map((d) => {
-              const maxVal = Math.max(...data.chartData.flatMap(x => [x.feedUsed, x.feedProduced]));
-              return (
-                <div className="bar-group" key={d.week}>
-                  <div className="bars">
-                    <div
-                      className="bar bar-produced"
-                      style={{ height: `${(d.feedProduced / maxVal) * 140}px` }}
-                      title={`${t('dashboard.chart_produced')}: ${d.feedProduced} kg`}
-                    />
-                    <div
-                      className="bar bar-used"
-                      style={{ height: `${(d.feedUsed / maxVal) * 140}px` }}
-                      title={`${t('dashboard.chart_used')}: ${d.feedUsed} kg`}
-                    />
-                  </div>
-                  <p className="bar-label">{d.week}</p>
+            {data.chartData.map(d => (
+              <div className="bar-group" key={d.week}>
+                <div className="bars">
+                  <div className="bar bar-produced" style={{ height: `${(d.feedProduced / maxVal) * 140}px` }} title={`${t('dashboard.chart_produced')}: ${d.feedProduced} kg`} />
+                  <div className="bar bar-used" style={{ height: `${(d.feedUsed / maxVal) * 140}px` }} title={`${t('dashboard.chart_used')}: ${d.feedUsed} kg`} />
                 </div>
-              );
-            })}
+                <p className="bar-label">{d.week}</p>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -141,8 +127,9 @@ function Dashboard() {
             </div>
           ))}
         </div>
-
       </div>
+
+      <TrustPanel />
 
     </div>
   );

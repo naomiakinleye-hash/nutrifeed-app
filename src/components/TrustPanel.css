@@ -1,0 +1,111 @@
+.trust-panel {
+  background-color: #F7F3E8;
+  border-radius: 8px;
+  padding: 32px 28px;
+  margin-top: 40px;
+}
+
+.trust-panel-heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #B2A170;
+  margin-bottom: 20px;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.trust-card {
+  background-color: #FCF6E3;
+  border-radius: 6px;
+  padding: 20px 18px;
+  transition: background-color 0.2s ease;
+}
+
+.trust-card:hover {
+  background-color: #DACDAA;
+}
+
+.trust-status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.trust-indicator {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: trust-pulse 2.5s ease-in-out infinite;
+}
+
+.trust-indicator--green {
+  background-color: #6B8E23;
+  box-shadow: 0 0 0 0 rgba(107, 142, 35, 0.4);
+}
+
+.trust-indicator--amber {
+  background-color: #C08A1E;
+  box-shadow: 0 0 0 0 rgba(192, 138, 30, 0.4);
+}
+
+@keyframes trust-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(107, 142, 35, 0.4); }
+  70%  { box-shadow: 0 0 0 6px rgba(107, 142, 35, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(107, 142, 35, 0); }
+}
+
+.trust-card-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #B2A170;
+}
+
+.trust-card-value {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #496218;
+  margin-bottom: 4px;
+}
+
+.trust-card-note {
+  font-size: 0.78rem;
+  color: #B2A170;
+  line-height: 1.5;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.trust-panel-footer {
+  font-size: 0.8rem;
+  color: #B2A170;
+  font-family: 'DM Sans', sans-serif;
+  border-top: 1px solid #DACDAA;
+  padding-top: 16px;
+}
+
+.trust-panel-link {
+  color: #6B8E23;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.trust-panel-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .trust-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

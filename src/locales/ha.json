@@ -293,5 +293,22 @@
     "terms_link": "Sharuɗɗa da Yanayi",
     "and": "da",
     "privacy_link": "Manufar Sirri"
+  },
+  "trust": {
+    "title": "Matsayin Amincin Tsarin",
+    "system_status": "Matsayin Tsarin",
+    "system_online": "Duk tsare-tsare suna kan layi",
+    "system_note": "App yana aiki daidai ba tare da wata matsala ba.",
+    "data_usage": "Amfani Da Bayanai",
+    "data_local": "An adana a gida",
+    "data_note": "Bayanan gonarka suna kan na'urarka sai dai idan ka shiga.",
+    "security": "Tsaro",
+    "security_https": "HTTPS yana aiki",
+    "security_note": "Duk bayanai tsakanin na'urarka da sabobin mu an rufe su.",
+    "compliance": "Bin Ka'idoji",
+    "compliance_ndpa": "NDPA 2023",
+    "compliance_note": "An tsara wannan app don bin Dokar Kare Bayanan Najeriya 2023.",
+    "footer": "Ana gudanar da bayananku a fili.",
+    "footer_link": "Karanta Manufar Sirrinmu"
   }
 }

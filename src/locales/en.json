@@ -293,5 +293,22 @@
     "terms_link": "Terms and Conditions",
     "and": "and",
     "privacy_link": "Privacy Policy"
+  },
+  "trust": {
+    "title": "System Trust Status",
+    "system_status": "System Status",
+    "system_online": "All systems online",
+    "system_note": "App is running normally with no reported issues.",
+    "data_usage": "Data Usage",
+    "data_local": "Stored locally",
+    "data_note": "Your farm data stays on your device unless you are logged in.",
+    "security": "Security",
+    "security_https": "HTTPS active",
+    "security_note": "All data between your device and our servers is encrypted.",
+    "compliance": "Compliance",
+    "compliance_ndpa": "NDPA 2023",
+    "compliance_note": "This app is designed to comply with Nigeria Data Protection Act 2023.",
+    "footer": "Your data is handled transparently.",
+    "footer_link": "Read our Privacy Policy"
   }
 }

@@ -293,5 +293,22 @@
     "terms_link": "Awọn Ofin ati Ipo",
     "and": "ati",
     "privacy_link": "Eto Asiri"
+  },
+  "trust": {
+    "title": "Ipo Igbẹkẹle Eto",
+    "system_status": "Ipo Eto",
+    "system_online": "Gbogbo awọn eto wa lori ayelujara",
+    "system_note": "Ohun elo n ṣiṣẹ deede laisi awọn iṣoro ti a royin.",
+    "data_usage": "Lilo Data",
+    "data_local": "Ti fipamọ ni agbegbe",
+    "data_note": "Data oko rẹ wa lori ẹrọ rẹ ayafi ti o ba wọle si akọọlẹ.",
+    "security": "Aabo",
+    "security_https": "HTTPS n ṣiṣẹ",
+    "security_note": "Gbogbo data laarin ẹrọ rẹ ati awọn olupin wa ti yiyan.",
+    "compliance": "Ibamu",
+    "compliance_ndpa": "NDPA 2023",
+    "compliance_note": "Ohun elo yii ni a ṣe lati ni ibamu pelu Ofin Aabo Data Naijiria 2023.",
+    "footer": "A n mu data rẹ ṣe ni gbangba.",
+    "footer_link": "Ka Eto Asiri wa"
   }
 }
