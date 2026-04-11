@@ -1,3 +1,5 @@
+/* Privacy.css — follows the exact same patterns as Learn.css and Dashboard.css */
+
 .privacy-page {
   background-color: #FCF6E3;
   min-height: 100vh;
@@ -6,6 +8,7 @@
   margin: 0 auto;
 }
 
+/* ─── HEADER — matches .learn-header ─────────────────────────────────────── */
 .privacy-header {
   text-align: center;
   margin-bottom: 60px;
@@ -42,6 +45,7 @@
   margin-top: 12px !important;
 }
 
+/* ─── SECTION TITLE — matches .dashboard-section-title ───────────────────── */
 .privacy-section-title,
 .privacy-summary-title {
   font-size: 0.75rem;
@@ -53,6 +57,7 @@
   margin-top: 10px;
 }
 
+/* ─── SUMMARY GRID — matches .metrics-grid ───────────────────────────────── */
 .privacy-summary-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -91,6 +96,7 @@
   line-height: 1.5;
 }
 
+/* ─── POLICY GRID — matches .learn-grid ──────────────────────────────────── */
 .privacy-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -98,6 +104,7 @@
   margin-bottom: 60px;
 }
 
+/* ─── POLICY CARD — matches .learn-card ──────────────────────────────────── */
 .policy-card {
   background-color: #F7F3E8;
   border-radius: 8px;
@@ -132,6 +139,7 @@
   line-height: 1.75;
 }
 
+/* ─── TRUST SECTION — matches .trust-section in Learn.css ────────────────── */
 .privacy-trust {
   background-color: #F7F3E8;
   border-radius: 8px;
@@ -177,6 +185,7 @@
   background-color: #6B8E23;
   color: #FCF6E3;
 }
+
 .privacy-btn--primary:hover {
   background-color: #496218;
 }
@@ -185,10 +194,12 @@
   background-color: #DACDAA;
   color: #496218;
 }
+
 .privacy-btn--secondary:hover {
   background-color: #c9bc95;
 }
 
+/* ─── RESPONSIVE — matches existing mobile breakpoints ───────────────────── */
 @media (max-width: 640px) {
   .privacy-page {
     padding: 50px 20px;

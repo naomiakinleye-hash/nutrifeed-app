@@ -1,5 +1,4 @@
-/* Auth.css — shared styles for Login.js and Signup.js */
-/* Follows the exact same conventions as Dashboard.css and FeedCalculator.css */
+/* Auth.css */
 
 .auth-page {
   background-color: #FCF6E3;
@@ -22,7 +21,6 @@
   max-width: 560px;
 }
 
-/* ─── Header ─────────────────────────── */
 .auth-header {
   margin-bottom: 36px;
 }
@@ -51,13 +49,11 @@
   line-height: 1.6;
 }
 
-/* ─── Form ───────────────────────────── */
 .auth-form {
   display: flex;
   flex-direction: column;
 }
 
-/* Reuses .form-group from FeedCalculator.css — same pattern */
 .auth-form .form-group {
   margin-bottom: 24px;
 }
@@ -102,7 +98,6 @@
   box-shadow: inset 0 0 0 2px #9B2335;
 }
 
-/* Reuses .field-error from FeedCalculator.css */
 .field-error {
   color: #9B2335;
   font-size: 0.82rem;
@@ -117,7 +112,6 @@
   font-family: 'DM Sans', sans-serif;
 }
 
-/* ─── Section labels inside signup form ── */
 .auth-section-label {
   font-size: 0.75rem;
   font-weight: 700;
@@ -153,7 +147,31 @@
   margin-top: -8px;
 }
 
-/* ─── Submit button ─── matches .dashboard-cta ── */
+/* Terms and conditions row */
+.auth-terms-row {
+  margin-bottom: 20px;
+}
+
+.auth-terms-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  color: #566316;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.auth-terms-checkbox {
+  margin-top: 2px;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  accent-color: #6B8E23;
+  cursor: pointer;
+}
+
 .auth-button {
   width: 100%;
   padding: 15px;
@@ -179,7 +197,6 @@
   cursor: not-allowed;
 }
 
-/* ─── Bottom links ─────────────────────── */
 .auth-switch {
   font-size: 0.88rem;
   color: #B2A170;
@@ -198,22 +215,11 @@
   text-decoration: underline;
 }
 
-.auth-notice {
-  font-size: 0.78rem;
-  color: #B2A170;
-  text-align: center;
-  margin-top: 12px;
-  line-height: 1.6;
-  font-family: 'DM Sans', sans-serif;
-}
-
-/* ─── Responsive ─────────────────────── */
 @media (max-width: 640px) {
   .auth-page {
     padding: 50px 16px;
     align-items: flex-start;
   }
-
   .auth-card {
     padding: 36px 24px;
   }

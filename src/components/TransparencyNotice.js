@@ -8,7 +8,7 @@ const NOTICE_CONTENT = {
       'Results are saved to your browser only, not our servers, unless you have an account.',
       'If you log in, calculation history is used to personalise your feed recommendations.',
       'We never share individual farm data with third parties.',
-      'You can delete your history any time from your Profile page.',
+      'You can delete your history any time from your profile.',
     ],
   },
   signup: {

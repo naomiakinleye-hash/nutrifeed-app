@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useAuth } from '../context/AuthContext';
 import TransparencyNotice from '../components/TransparencyNotice';
 import './Auth.css';
 
@@ -8,17 +10,19 @@ function containsScript(value) {
 }
 
 const FARM_TYPES = [
-  { value: '', label: 'Select farm type (optional)' },
+  { value: '',        label: 'Select farm type (optional)' },
   { value: 'broiler', label: 'Broiler' },
-  { value: 'layer', label: 'Layer' },
+  { value: 'layer',   label: 'Layer' },
   { value: 'catfish', label: 'Catfish' },
-  { value: 'rabbit', label: 'Rabbit' },
-  { value: 'pig', label: 'Pig' },
-  { value: 'mixed', label: 'Mixed' },
+  { value: 'rabbit',  label: 'Rabbit' },
+  { value: 'pig',     label: 'Pig' },
+  { value: 'mixed',   label: 'Mixed' },
 ];
 
 function Signup() {
-  const navigate = useNavigate();
+  const navigate  = useNavigate();
+  const { login } = useAuth();
+  const { t }     = useTranslation();
 
   const [formData, setFormData] = useState({
     name:      '',
@@ -27,15 +31,13 @@ function Signup() {
     farmType:  '',
     birdCount: '',
   });
-
   const [errors, setErrors]   = useState({});
+  const [agreed, setAgreed]   = useState(false);
   const [loading, setLoading] = useState(false);
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    if (errors[e.target.name]) {
-      setErrors({ ...errors, [e.target.name]: null });
-    }
+    if (errors[e.target.name]) setErrors({ ...errors, [e.target.name]: null });
   }
 
   function validate() {
@@ -68,22 +70,29 @@ function Signup() {
       newErrors.birdCount = 'Enter a valid number of birds';
     }
 
+    if (!agreed) {
+      newErrors.terms = 'You must agree to the Terms and Conditions to create an account';
+    }
+
     return newErrors;
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     const newErrors = validate();
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
+    if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return; }
 
     setLoading(true);
-    // Firebase auth + Firestore write will go here in the next phase
+    // Firebase auth + Firestore write goes here in next phase
     setTimeout(() => {
+      login({
+        name:      formData.name,
+        email:     formData.email,
+        farmType:  formData.farmType,
+        birdCount: formData.birdCount,
+      });
       setLoading(false);
-      navigate('/dashboard');
+      navigate('/');
     }, 1000);
   }
 
@@ -93,20 +102,16 @@ function Signup() {
 
         <div className="auth-header">
           <p className="auth-brand">BSF NutriFeed</p>
-          <h1>Create your account</h1>
-          <p className="auth-subtitle">
-            Track your feed calculations, monitor growth, and get personalised
-            recommendations.
-          </p>
+          <h1>{t('auth.signup_title')}</h1>
+          <p className="auth-subtitle">{t('auth.signup_subtitle')}</p>
         </div>
 
         <form className="auth-form" onSubmit={handleSubmit} noValidate>
 
-          {/* Required fields */}
           <p className="auth-section-label">Account details</p>
 
           <div className="form-group">
-            <label htmlFor="name">Full name</label>
+            <label htmlFor="name">{t('auth.name_label')}</label>
             <input
               id="name"
               type="text"
@@ -116,15 +121,12 @@ function Signup() {
               onChange={handleChange}
               autoComplete="name"
               aria-invalid={errors.name ? 'true' : 'false'}
-              aria-describedby={errors.name ? 'name-error' : undefined}
             />
-            {errors.name && (
-              <p id="name-error" className="field-error" role="alert">{errors.name}</p>
-            )}
+            {errors.name && <p className="field-error" role="alert">{errors.name}</p>}
           </div>
 
           <div className="form-group">
-            <label htmlFor="signup-email">Email address</label>
+            <label htmlFor="signup-email">{t('auth.email_label')}</label>
             <input
               id="signup-email"
               type="email"
@@ -134,15 +136,12 @@ function Signup() {
               onChange={handleChange}
               autoComplete="email"
               aria-invalid={errors.email ? 'true' : 'false'}
-              aria-describedby={errors.email ? 'signup-email-error' : undefined}
             />
-            {errors.email && (
-              <p id="signup-email-error" className="field-error" role="alert">{errors.email}</p>
-            )}
+            {errors.email && <p className="field-error" role="alert">{errors.email}</p>}
           </div>
 
           <div className="form-group">
-            <label htmlFor="signup-password">Password</label>
+            <label htmlFor="signup-password">{t('auth.password_label')}</label>
             <input
               id="signup-password"
               type="password"
@@ -152,32 +151,25 @@ function Signup() {
               onChange={handleChange}
               autoComplete="new-password"
               aria-invalid={errors.password ? 'true' : 'false'}
-              aria-describedby={errors.password ? 'signup-password-error' : 'password-hint'}
             />
             {errors.password ? (
-              <p id="signup-password-error" className="field-error" role="alert">{errors.password}</p>
+              <p className="field-error" role="alert">{errors.password}</p>
             ) : (
-              <p id="password-hint" className="field-hint">Minimum 8 characters</p>
+              <p className="field-hint">Minimum 8 characters</p>
             )}
           </div>
 
-          {/* Optional farm details */}
           <p className="auth-section-label auth-section-label--optional">
             Farm details <span className="auth-optional-tag">Optional</span>
           </p>
           <p className="auth-section-desc">
-            Adding your farm details helps us personalise feed recommendations.
-            You can skip this and add it later from your profile.
+            Adding your farm details helps us personalise your recommendations.
+            You can add these later from your profile.
           </p>
 
           <div className="form-group">
             <label htmlFor="farmType">Farm type</label>
-            <select
-              id="farmType"
-              name="farmType"
-              value={formData.farmType}
-              onChange={handleChange}
-            >
+            <select id="farmType" name="farmType" value={formData.farmType} onChange={handleChange}>
               {FARM_TYPES.map(ft => (
                 <option key={ft.value} value={ft.value}>{ft.label}</option>
               ))}
@@ -195,24 +187,49 @@ function Signup() {
               onChange={handleChange}
               min="0"
               aria-invalid={errors.birdCount ? 'true' : 'false'}
-              aria-describedby={errors.birdCount ? 'birdCount-error' : undefined}
             />
-            {errors.birdCount && (
-              <p id="birdCount-error" className="field-error" role="alert">{errors.birdCount}</p>
-            )}
+            {errors.birdCount && <p className="field-error" role="alert">{errors.birdCount}</p>}
           </div>
 
           <TransparencyNotice context="signup" />
 
+          {/* Terms and conditions — required before account creation */}
+          <div className="auth-terms-row">
+            <label className="auth-terms-label">
+              <input
+                type="checkbox"
+                checked={agreed}
+                onChange={e => {
+                  setAgreed(e.target.checked);
+                  if (errors.terms) setErrors({ ...errors, terms: null });
+                }}
+                className="auth-terms-checkbox"
+              />
+              <span>
+                I have read and agree to the{' '}
+                <Link to="/terms" className="auth-switch-link" target="_blank" rel="noopener noreferrer">
+                  Terms and Conditions
+                </Link>
+                {' '}and{' '}
+                <Link to="/privacy" className="auth-switch-link" target="_blank" rel="noopener noreferrer">
+                  Privacy Policy
+                </Link>
+              </span>
+            </label>
+            {errors.terms && (
+              <p className="field-error" role="alert">{errors.terms}</p>
+            )}
+          </div>
+
           <button type="submit" className="auth-button" disabled={loading}>
-            {loading ? 'Creating account...' : 'Create account'}
+            {loading ? 'Creating account...' : t('auth.signup_button')}
           </button>
 
         </form>
 
         <p className="auth-switch">
-          Already have an account?{' '}
-          <Link to="/login" className="auth-switch-link">Log in</Link>
+          {t('auth.have_account')}{' '}
+          <Link to="/login" className="auth-switch-link">{t('auth.log_in')}</Link>
         </p>
 
       </div>

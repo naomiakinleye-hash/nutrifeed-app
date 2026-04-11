@@ -1,0 +1,42 @@
+/* PageTransition.css */
+
+.pt-overlay {
+  min-height: 100vh;
+  background-color: #FCF6E3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pt-disc-wrap {
+  perspective: 300px;
+}
+
+.pt-disc {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #496218;
+  box-shadow: 0 0 0 4px rgba(73, 98, 24, 0.2);
+  animation: pt-spin-x 0.9s linear infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes pt-spin-x {
+  from { transform: rotateX(0deg); }
+  to   { transform: rotateX(360deg); }
+}
+
+.pt-content {
+  opacity: 0;
+}
+
+.pt-content--visible {
+  opacity: 1;
+  animation: pt-fade-in 0.3s ease forwards;
+}
+
+@keyframes pt-fade-in {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

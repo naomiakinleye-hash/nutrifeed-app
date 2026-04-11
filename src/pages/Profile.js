@@ -1,24 +1,24 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useAuth } from '../context/AuthContext';
 import './Auth.css';
 import './Profile.css';
 
-// Mock user data — will be replaced by Firebase Firestore fetch in next phase
-const MOCK_USER = {
-  name:      'Amina Bello',
-  email:     'amina@example.com',
-  farmType:  'broiler',
-  birdCount: '500',
-  joinedDate: 'March 2026',
-};
-
 const FARM_TYPES = [
-  { value: 'broiler',  label: 'Broiler' },
-  { value: 'layer',    label: 'Layer' },
-  { value: 'catfish',  label: 'Catfish' },
-  { value: 'rabbit',   label: 'Rabbit' },
-  { value: 'pig',      label: 'Pig' },
-  { value: 'mixed',    label: 'Mixed' },
+  { value: 'broiler', label: 'Broiler' },
+  { value: 'layer',   label: 'Layer' },
+  { value: 'catfish', label: 'Catfish' },
+  { value: 'rabbit',  label: 'Rabbit' },
+  { value: 'pig',     label: 'Pig' },
+  { value: 'mixed',   label: 'Mixed' },
+];
+
+const STATES = [
+  'Abia','Adamawa','Akwa Ibom','Anambra','Bauchi','Bayelsa','Benue','Borno',
+  'Cross River','Delta','Ebonyi','Edo','Ekiti','Enugu','FCT','Gombe','Imo',
+  'Jigawa','Kaduna','Kano','Katsina','Kebbi','Kogi','Kwara','Lagos','Nasarawa',
+  'Niger','Ogun','Ondo','Osun','Oyo','Plateau','Rivers','Sokoto','Taraba','Yobe','Zamfara',
 ];
 
 function containsScript(value) {
@@ -26,55 +26,54 @@ function containsScript(value) {
 }
 
 function Profile() {
-  const navigate = useNavigate();
+  const navigate              = useNavigate();
+  const { user, login, logout } = useAuth();
+  const { t }                 = useTranslation();
 
-  const [formData, setFormData] = useState({ ...MOCK_USER });
-  const [errors, setErrors]     = useState({});
-  const [saved, setSaved]       = useState(false);
-  const [loading, setLoading]   = useState(false);
+  const [formData, setFormData] = useState({
+    name:      user?.name      || '',
+    email:     user?.email     || '',
+    farmType:  user?.farmType  || '',
+    birdCount: user?.birdCount || '',
+    phone:     user?.phone     || '',
+    address:   user?.address   || '',
+    state:     user?.state     || '',
+  });
+  const [errors, setErrors]   = useState({});
+  const [saved, setSaved]     = useState(false);
+  const [loading, setLoading] = useState(false);
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setSaved(false);
-    if (errors[e.target.name]) {
-      setErrors({ ...errors, [e.target.name]: null });
-    }
+    if (errors[e.target.name]) setErrors({ ...errors, [e.target.name]: null });
   }
 
   function validate() {
     const newErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = 'Full name is required';
-    } else if (containsScript(formData.name)) {
-      newErrors.name = 'Invalid input detected';
-    }
-
+    if (!formData.name.trim()) newErrors.name = 'Full name is required';
+    else if (containsScript(formData.name)) newErrors.name = 'Invalid input detected';
     if (formData.birdCount && (isNaN(formData.birdCount) || Number(formData.birdCount) < 0)) {
       newErrors.birdCount = 'Enter a valid number of birds';
     }
-
     return newErrors;
   }
 
   function handleSave(e) {
     e.preventDefault();
     const newErrors = validate();
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
+    if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return; }
 
     setLoading(true);
-    // Firestore update will go here in the next phase
     setTimeout(() => {
+      login({ ...user, ...formData });
       setLoading(false);
       setSaved(true);
     }, 800);
   }
 
   function handleLogout() {
-    // Firebase signOut will go here in the next phase
+    logout();
     navigate('/login');
   }
 
@@ -83,131 +82,105 @@ function Profile() {
 
       <div className="profile-header">
         <div>
-          <h1>Your Profile</h1>
-          <p>Member since {formData.joinedDate}</p>
+          <h1>{t('profile.title')}</h1>
+          {user?.email && <p>{user.email}</p>}
         </div>
         <button className="profile-logout-btn" onClick={handleLogout}>
-          Log out
+          {t('profile.logout')}
         </button>
       </div>
 
-      {/* Account section */}
-      <div className="profile-section-title">Account Details</div>
+      <div className="profile-section-title">{t('profile.account_details')}</div>
       <div className="profile-card">
         <form onSubmit={handleSave} noValidate>
 
           <div className="form-group">
-            <label htmlFor="profile-name">Full name</label>
-            <input
-              id="profile-name"
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              aria-invalid={errors.name ? 'true' : 'false'}
-              aria-describedby={errors.name ? 'profile-name-error' : undefined}
-            />
-            {errors.name && (
-              <p id="profile-name-error" className="field-error" role="alert">{errors.name}</p>
-            )}
+            <label htmlFor="profile-name">{t('auth.name_label')}</label>
+            <input id="profile-name" type="text" name="name" value={formData.name} onChange={handleChange} aria-invalid={errors.name ? 'true' : 'false'} />
+            {errors.name && <p className="field-error" role="alert">{errors.name}</p>}
           </div>
 
           <div className="form-group">
-            <label htmlFor="profile-email">Email address</label>
-            <input
-              id="profile-email"
-              type="email"
-              name="email"
-              value={formData.email}
-              disabled
-              aria-describedby="email-hint"
-            />
-            <p id="email-hint" className="field-hint">
-              Email cannot be changed. Contact us to update it.
-            </p>
+            <label htmlFor="profile-email">{t('auth.email_label')}</label>
+            <input id="profile-email" type="email" name="email" value={formData.email} disabled />
+            <p className="field-hint">Email cannot be changed here.</p>
           </div>
 
-          <p className="profile-section-label">Farm Details</p>
+          <div className="form-group">
+            <label htmlFor="profile-phone">{t('profile.phone_label')}</label>
+            <input id="profile-phone" type="tel" name="phone" placeholder="e.g. 08012345678" value={formData.phone} onChange={handleChange} />
+          </div>
 
           <div className="form-group">
-            <label htmlFor="profile-farmType">Farm type</label>
-            <select
-              id="profile-farmType"
-              name="farmType"
-              value={formData.farmType}
-              onChange={handleChange}
-            >
-              {FARM_TYPES.map(ft => (
-                <option key={ft.value} value={ft.value}>{ft.label}</option>
-              ))}
+            <label htmlFor="profile-address">{t('profile.address_label')}</label>
+            <input id="profile-address" type="text" name="address" placeholder="e.g. 12 Farm Road, Oke Aro" value={formData.address} onChange={handleChange} />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="profile-state">{t('profile.state_label')}</label>
+            <select id="profile-state" name="state" value={formData.state} onChange={handleChange}>
+              <option value="">{t('profile.state_placeholder')}</option>
+              {STATES.map(s => <option key={s} value={s}>{s}</option>)}
+            </select>
+          </div>
+
+          <p className="profile-section-label">{t('profile.farm_section')}</p>
+
+          <div className="form-group">
+            <label htmlFor="profile-farmType">{t('profile.farm_type_label')}</label>
+            <select id="profile-farmType" name="farmType" value={formData.farmType} onChange={handleChange}>
+              <option value="">{t('profile.farm_type_placeholder')}</option>
+              {FARM_TYPES.map(ft => <option key={ft.value} value={ft.value}>{ft.label}</option>)}
             </select>
           </div>
 
           <div className="form-group">
-            <label htmlFor="profile-birdCount">Number of birds</label>
-            <input
-              id="profile-birdCount"
-              type="number"
-              name="birdCount"
-              value={formData.birdCount}
-              onChange={handleChange}
-              min="0"
-              aria-invalid={errors.birdCount ? 'true' : 'false'}
-              aria-describedby={errors.birdCount ? 'birdCount-error' : undefined}
-            />
-            {errors.birdCount && (
-              <p id="birdCount-error" className="field-error" role="alert">{errors.birdCount}</p>
-            )}
+            <label htmlFor="profile-birdCount">{t('profile.birds_label')}</label>
+            <input id="profile-birdCount" type="number" name="birdCount" value={formData.birdCount} onChange={handleChange} min="0" aria-invalid={errors.birdCount ? 'true' : 'false'} />
+            {errors.birdCount && <p className="field-error" role="alert">{errors.birdCount}</p>}
           </div>
 
           <div className="profile-save-row">
             <button type="submit" className="auth-button profile-save-btn" disabled={loading}>
-              {loading ? 'Saving...' : 'Save changes'}
+              {loading ? t('profile.saving') : t('profile.save_btn')}
             </button>
-            {saved && <p className="profile-saved-msg">Changes saved.</p>}
+            {saved && <p className="profile-saved-msg">{t('profile.saved')}</p>}
           </div>
 
         </form>
       </div>
 
-      {/* Data & privacy section */}
-      <div className="profile-section-title">Data & Privacy</div>
+      <div className="profile-section-title">{t('profile.data_privacy')}</div>
       <div className="profile-card">
+
         <div className="profile-data-row">
           <div>
-            <p className="profile-data-label">Your calculation history</p>
-            <p className="profile-data-desc">
-              All feed calculations you have run while logged in are stored against
-              your account and used to personalise recommendations.
-            </p>
+            <p className="profile-data-label">{t('profile.history_label')}</p>
+            <p className="profile-data-desc">{t('profile.history_desc')}</p>
           </div>
-          <button className="profile-action-btn">View history</button>
+          <button className="profile-action-btn">{t('profile.history_btn')}</button>
         </div>
 
         <div className="profile-data-divider" />
 
         <div className="profile-data-row">
           <div>
-            <p className="profile-data-label">Export your data</p>
-            <p className="profile-data-desc">
-              Download a copy of all data we hold about you.
-            </p>
+            <p className="profile-data-label">{t('profile.export_label')}</p>
+            <p className="profile-data-desc">{t('profile.export_desc')}</p>
           </div>
-          <button className="profile-action-btn">Request export</button>
+          <button className="profile-action-btn">{t('profile.export_btn')}</button>
         </div>
 
         <div className="profile-data-divider" />
 
         <div className="profile-data-row">
           <div>
-            <p className="profile-data-label profile-data-label--danger">Delete account</p>
-            <p className="profile-data-desc">
-              Permanently deletes your account and all associated data after a
-              30-day safety window.
-            </p>
+            <p className="profile-data-label profile-data-label--danger">{t('profile.delete_label')}</p>
+            <p className="profile-data-desc">{t('profile.delete_desc')}</p>
           </div>
-          <button className="profile-action-btn profile-action-btn--danger">Delete account</button>
+          <button className="profile-action-btn profile-action-btn--danger">{t('profile.delete_btn')}</button>
         </div>
+
       </div>
 
     </div>

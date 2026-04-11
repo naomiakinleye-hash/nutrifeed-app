@@ -1,3 +1,6 @@
+/* ConsentBanner.css */
+
+/* Floats above all pages, anchored to the bottom */
 .consent-banner {
   position: fixed;
   bottom: 24px;
@@ -22,6 +25,7 @@
   border: 1px solid #DACDAA;
 }
 
+/* ── Text ── */
 .consent-top {
   margin-bottom: 16px;
 }
@@ -48,6 +52,7 @@
   text-decoration: underline;
 }
 
+/* ── Granular options ── */
 .consent-options {
   background-color: #F7F3E8;
   border-radius: 5px;
@@ -99,6 +104,7 @@
   font-family: 'DM Sans', sans-serif;
 }
 
+/* ── Toggle switch ── */
 .consent-toggle-label {
   position: relative;
   width: 44px;
@@ -144,6 +150,7 @@
   transform: translateX(20px);
 }
 
+/* ── Action buttons — all three equally prominent ── */
 .consent-actions {
   display: flex;
   gap: 10px;
@@ -163,6 +170,7 @@
   white-space: nowrap;
 }
 
+/* Reject — styled as a clear, visible option (not hidden or greyed out) */
 .consent-btn--reject {
   background-color: #F7F3E8;
   color: #496218;
@@ -171,6 +179,7 @@
   background-color: #DACDAA;
 }
 
+/* Manage — neutral */
 .consent-btn--manage {
   background-color: #DACDAA;
   color: #496218;
@@ -179,6 +188,7 @@
   background-color: #c9bc95;
 }
 
+/* Accept — same weight as Reject, not deliberately more prominent */
 .consent-btn--accept {
   background-color: #6B8E23;
   color: #FCF6E3;
@@ -187,6 +197,7 @@
   background-color: #496218;
 }
 
+/* ── Mobile ── */
 @media (max-width: 600px) {
   .consent-banner {
     bottom: 0;
@@ -195,13 +206,16 @@
     transform: none;
     max-width: 100%;
   }
+
   .consent-inner {
     border-radius: 8px 8px 0 0;
     padding: 20px;
   }
+
   .consent-actions {
     flex-direction: column;
   }
+
   .consent-btn {
     flex: none;
   }

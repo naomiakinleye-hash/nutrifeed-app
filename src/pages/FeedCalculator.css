@@ -1,3 +1,5 @@
+/* FeedCalculator.css — existing styles preserved, Week 3 additions marked */
+
 .calculator-page {
   background-color: #FCF6E3;
   min-height: 100vh;
@@ -68,6 +70,7 @@
   font-family: 'DM Sans', sans-serif;
   outline: none;
   transition: background-color 0.15s ease;
+  box-sizing: border-box;
 }
 
 .form-group input:focus,
@@ -75,10 +78,18 @@
   background-color: #DACDAA;
 }
 
+/* Week 3: error state border */
+.form-group input[aria-invalid="true"],
+.form-group select[aria-invalid="true"] {
+  background-color: #FDF0EE;
+  box-shadow: inset 0 0 0 2px #9B2335;
+}
+
 .field-error {
   color: #9B2335;
   font-size: 0.82rem;
   margin-top: 6px;
+  font-family: 'DM Sans', sans-serif;
 }
 
 .calc-button {
@@ -94,6 +105,7 @@
   margin-top: 8px;
   transition: background-color 0.2s ease;
   font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
 }
 
 .calc-button:hover {
@@ -149,6 +161,16 @@
   font-size: 0.93rem;
   line-height: 1.75;
   margin-top: 8px;
+}
+
+/* Week 3: data notice below result */
+.result-notice {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #DACDAA;
+  font-size: 0.78rem;
+  color: #B2A170;
+  font-family: 'DM Sans', sans-serif;
 }
 
 /* ─── HOW IT WORKS ───────────────────── */

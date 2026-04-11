@@ -1,15 +1,17 @@
-// Navbar.js — Updated for Week 3
-// Added: Login/Sign Up link when logged out, Profile link when logged in.
-// Auth state is mocked for now — will connect to Firebase in next phase.
-
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useAuth } from '../context/AuthContext';
 import './Navbar.css';
 
-// Temporary mock — replace with Firebase auth state in next phase
-const IS_LOGGED_IN = false;
-
 function Navbar() {
-  const navigate = useNavigate();
+  const navigate    = useNavigate();
+  const { t }       = useTranslation();
+  const { user, logout } = useAuth();
+
+  function handleLogout() {
+    logout();
+    navigate('/login');
+  }
 
   return (
     <nav className="navbar">
@@ -18,26 +20,21 @@ function Navbar() {
       </span>
       <div className="navbar-links">
         <NavLink to="/" end className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
-          Home
+          {t('nav.home')}
         </NavLink>
         <NavLink to="/dashboard" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
-          Dashboard
+          {t('nav.dashboard')}
         </NavLink>
         <NavLink to="/calculator" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
-          Feed Calculator
+          {t('nav.calculator')}
         </NavLink>
         <NavLink to="/learn" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
-          Learn
+          {t('nav.learn')}
         </NavLink>
-
-        {IS_LOGGED_IN ? (
-          <NavLink to="/profile" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
-            Profile
-          </NavLink>
-        ) : (
-          <NavLink to="/login" className={({ isActive }) => isActive ? 'nav-link nav-link--cta active' : 'nav-link nav-link--cta'}>
-            Log in
-          </NavLink>
+        {user && (
+          <button className="nav-link nav-link--logout" onClick={handleLogout}>
+            Log out
+          </button>
         )}
       </div>
     </nav>

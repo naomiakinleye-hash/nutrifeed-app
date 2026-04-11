@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import './ConsentBanner.css';
 
 const CONSENT_KEY = 'nutrifeed_consent_v1';
@@ -11,6 +12,7 @@ function ConsentBanner() {
     analytics:       false,
     personalisation: false,
   });
+  const { t } = useTranslation();
 
   useEffect(() => {
     const saved = localStorage.getItem(CONSENT_KEY);
@@ -33,70 +35,76 @@ function ConsentBanner() {
   return (
     <div className="consent-banner" role="dialog" aria-modal="true" aria-label="Cookie consent">
       <div className="consent-inner">
+
         <div className="consent-top">
-          <p className="consent-title">We respect your privacy</p>
+          <p className="consent-title">{t('consent.title')}</p>
           <p className="consent-body">
-            NutriFeed uses cookies to make the app work and, optionally, to
-            understand how farmers use the calculator. We never sell your data.{' '}
+            {t('consent.body')}{' '}
             <a href="/privacy" className="consent-link">Privacy Policy</a>
           </p>
         </div>
+
         {expanded && (
           <div className="consent-options">
             <ConsentRow
-              label="Essential"
-              description="Required for login and navigation. Cannot be disabled."
+              label={t('consent.essential_label')}
+              description={t('consent.essential_desc')}
+              badge={t('consent.always_on')}
               checked={prefs.essential}
               disabled
             />
             <ConsentRow
-              label="Usage Analytics"
-              description="Anonymous data on which features farmers use most."
+              label={t('consent.analytics_label')}
+              description={t('consent.analytics_desc')}
               checked={prefs.analytics}
               onChange={() => setPrefs(p => ({ ...p, analytics: !p.analytics }))}
             />
             <ConsentRow
-              label="Personalisation"
-              description="Saves your calculator preferences between visits."
+              label={t('consent.personalisation_label')}
+              description={t('consent.personalisation_desc')}
               checked={prefs.personalisation}
               onChange={() => setPrefs(p => ({ ...p, personalisation: !p.personalisation }))}
             />
           </div>
         )}
+
         <div className="consent-actions">
           <button
             className="consent-btn consent-btn--reject"
             onClick={() => save({ essential: true, analytics: false, personalisation: false })}
           >
-            Essential only
+            {t('consent.essential_only')}
           </button>
+
           {!expanded ? (
             <button className="consent-btn consent-btn--manage" onClick={() => setExpanded(true)}>
-              Manage
+              {t('consent.manage')}
             </button>
           ) : (
             <button className="consent-btn consent-btn--manage" onClick={() => save(prefs)}>
-              Save choices
+              {t('consent.save_choices')}
             </button>
           )}
+
           <button
             className="consent-btn consent-btn--accept"
             onClick={() => save({ essential: true, analytics: true, personalisation: true })}
           >
-            Accept all
+            {t('consent.accept_all')}
           </button>
         </div>
+
       </div>
     </div>
   );
 }
 
-function ConsentRow({ label, description, checked, disabled, onChange }) {
+function ConsentRow({ label, description, badge, checked, disabled, onChange }) {
   return (
     <div className={`consent-row ${disabled ? 'consent-row--disabled' : ''}`}>
       <div className="consent-row-text">
         <span className="consent-row-label">{label}</span>
-        {disabled && <span className="consent-row-badge">Always on</span>}
+        {disabled && <span className="consent-row-badge">{badge}</span>}
         <p className="consent-row-desc">{description}</p>
       </div>
       <label className="consent-toggle-label">

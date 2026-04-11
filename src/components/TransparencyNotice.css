@@ -1,3 +1,5 @@
+/* TransparencyNotice.css */
+
 .transparency-notice {
   background-color: #F7F3E8;
   border-radius: 5px;
@@ -11,6 +13,11 @@
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
+}
+
+.tn-shield {
+  font-size: 0.95rem;
+  flex-shrink: 0;
 }
 
 .tn-summary {
@@ -54,16 +61,17 @@
   line-height: 1.6;
 }
 
-.tn-detail-link {
+.tn-privacy-link {
+  color: #B2A170;
   padding-top: 4px;
 }
 
-.tn-detail-link a {
+.tn-privacy-link a {
   color: #6B8E23;
   font-weight: 600;
   text-decoration: none;
 }
 
-.tn-detail-link a:hover {
+.tn-privacy-link a:hover {
   text-decoration: underline;
 }

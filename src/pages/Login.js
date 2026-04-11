@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useAuth } from '../context/AuthContext';
 import './Auth.css';
 
 function containsScript(value) {
@@ -7,7 +9,9 @@ function containsScript(value) {
 }
 
 function Login() {
-  const navigate = useNavigate();
+  const navigate    = useNavigate();
+  const { login }   = useAuth();
+  const { t }       = useTranslation();
 
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [errors, setErrors]     = useState({});
@@ -15,9 +19,7 @@ function Login() {
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    if (errors[e.target.name]) {
-      setErrors({ ...errors, [e.target.name]: null });
-    }
+    if (errors[e.target.name]) setErrors({ ...errors, [e.target.name]: null });
   }
 
   function validate() {
@@ -44,17 +46,14 @@ function Login() {
   function handleSubmit(e) {
     e.preventDefault();
     const newErrors = validate();
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
+    if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return; }
 
     setLoading(true);
-    // Firebase auth will go here in the next phase
-    // For now, simulate a login delay
+    // Firebase auth goes here in the next phase
     setTimeout(() => {
+      login({ email: formData.email, name: formData.email.split('@')[0] });
       setLoading(false);
-      navigate('/dashboard');
+      navigate('/');
     }, 1000);
   }
 
@@ -64,14 +63,14 @@ function Login() {
 
         <div className="auth-header">
           <p className="auth-brand">BSF NutriFeed</p>
-          <h1>Welcome back</h1>
-          <p className="auth-subtitle">Log in to view your farm dashboard and feed history.</p>
+          <h1>{t('auth.login_title')}</h1>
+          <p className="auth-subtitle">{t('auth.login_subtitle')}</p>
         </div>
 
         <form className="auth-form" onSubmit={handleSubmit} noValidate>
 
           <div className="form-group">
-            <label htmlFor="email">Email address</label>
+            <label htmlFor="email">{t('auth.email_label')}</label>
             <input
               id="email"
               type="email"
@@ -81,15 +80,14 @@ function Login() {
               onChange={handleChange}
               autoComplete="email"
               aria-invalid={errors.email ? 'true' : 'false'}
-              aria-describedby={errors.email ? 'email-error' : undefined}
             />
             {errors.email && (
-              <p id="email-error" className="field-error" role="alert">{errors.email}</p>
+              <p className="field-error" role="alert">{errors.email}</p>
             )}
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">{t('auth.password_label')}</label>
             <input
               id="password"
               type="password"
@@ -99,27 +97,21 @@ function Login() {
               onChange={handleChange}
               autoComplete="current-password"
               aria-invalid={errors.password ? 'true' : 'false'}
-              aria-describedby={errors.password ? 'password-error' : undefined}
             />
             {errors.password && (
-              <p id="password-error" className="field-error" role="alert">{errors.password}</p>
+              <p className="field-error" role="alert">{errors.password}</p>
             )}
           </div>
 
           <button type="submit" className="auth-button" disabled={loading}>
-            {loading ? 'Logging in...' : 'Log in'}
+            {loading ? 'Logging in...' : t('auth.login_button')}
           </button>
 
         </form>
 
         <p className="auth-switch">
-          Don't have an account?{' '}
-          <Link to="/signup" className="auth-switch-link">Create one</Link>
-        </p>
-
-        <p className="auth-notice">
-          Your password is stored as a secure hash. We cannot read it.{' '}
-          <Link to="/privacy" className="auth-switch-link">Privacy Policy</Link>
+          {t('auth.no_account')}{' '}
+          <Link to="/signup" className="auth-switch-link">{t('auth.create_one')}</Link>
         </p>
 
       </div>
