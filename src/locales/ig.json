@@ -280,7 +280,18 @@
     "no_account": "Nweghị akaụntụ?",
     "create_one": "Mepụta otu",
     "have_account": "Nwere akaụntụ nchekwa?",
-    "log_in": "Banye"
+    "log_in": "Banye",
+    "account_details": "Nkọwa akaụntụ",
+    "password_hint": "Ihe kacha nta mkpụrụedemede 8",
+    "farm_details_label": "Nkọwa ugbo",
+    "farm_details_optional": "Nhọrọ",
+    "farm_details_desc": "Itinye nkọwa ugbo gị na-enye anyị aka ịhazi ndụmọdụ gị. Ị nwere ike itinye ha ka ọdịịcha site na profaịlụ gị.",
+    "farm_type_label": "Ụdị ugbo",
+    "birds_label": "Ọnụ ọgụgụ nnụnụ",
+    "terms_agree": "Agụọla m ma ekwenyekwara na",
+    "terms_link": "Usoro na Ọnọdụ",
+    "and": "na",
+    "privacy_link": "Iwu Nzuzo"
   },
   "trust": {
     "title": "Ọnọdụ Ntụkwasị Obi Sistemu",
@@ -298,5 +309,20 @@
     "compliance_note": "E mere ngwa a iji dabara na Iwu Nchekwa Data Nigeria 2023.",
     "footer": "Ana njikwa data gị n'ụzọ doro anya.",
     "footer_link": "Gụọ Iwu Nzuzo anyị"
+  },
+  "transparency": {
+    "calculator_summary": "Ọgụgụ gị nọ na ngwaọrụ gị naanị ma ọ bụrụhà na ịbanye.",
+    "calculator_detail1": "Nsonaazụ echebara na ihe nchọgharị gị naanị, ọ bụghị sava anyị.",
+    "calculator_detail2": "Ọ bụ na ị banye, ana eji akụkọ ọgụgụ hazi ndụmọdụ nri gị.",
+    "calculator_detail3": "Anyị anaghị ekekọrịta data ugbo ọ bụla na ndị ọzọ n'èzí.",
+    "calculator_detail4": "Ị nwere ike ihichapụ akụkọ gị mgbe ọ bụla site na profaịlụ gị.",
+    "signup_summary": "Anyị na-achịkọta naanị ihe achọrọ iji mepụta akaụntụ gị.",
+    "signup_detail1": "Imeyi: a na-eji ya naanị maka ịbanye na ọkwa akaụntụ dị mkpa.",
+    "signup_detail2": "Paswọọdụ: echebara dị ka hash nchekwa — anyị enweghị ike ịgụ ya.",
+    "signup_detail3": "Nkọwa ugbo bụ nhọrọ ma a na-eji ya naanị iji hazi ndụmọdụ nri.",
+    "signup_detail4": "Anyị anaghị ere data gị ma ọ bụ eji ya maka mgbasa ozi.",
+    "hide": "Zobe ihe omume",
+    "show": "Otu anyị si eji nke a",
+    "policy_link": "Gụọ Iwu Nzuzo zuru ezu"
   }
 }

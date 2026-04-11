@@ -286,13 +286,14 @@
     "account_details": "Cikakkun bayanan asusu",
     "farm_details_label": "Cikakkun bayanan gona",
     "farm_details_optional": "Zaɓi",
-    "farm_details_desc": "Ƙara cikakkun bayanan gonarka yana taimakon mu mu keɓance shawarwarinka.",
+    "farm_details_desc": "Ƙara cikakkun bayanan gonarka yana taimakon mu mu keɓance shawarwarinka. Zaka iya ƙarawa daga bayanan ka daga baya.",
     "farm_type_label": "Nau'in gona",
     "birds_label": "Yawan tsuntsaye",
     "terms_agree": "Na karanta kuma na yarda da",
     "terms_link": "Sharuɗɗa da Yanayi",
     "and": "da",
-    "privacy_link": "Manufar Sirri"
+    "privacy_link": "Manufar Sirri",
+    "password_hint": "Akalla haruffa 8"
   },
   "trust": {
     "title": "Matsayin Amincin Tsarin",
@@ -310,5 +311,20 @@
     "compliance_note": "An tsara wannan app don bin Dokar Kare Bayanan Najeriya 2023.",
     "footer": "Ana gudanar da bayananku a fili.",
     "footer_link": "Karanta Manufar Sirrinmu"
+  },
+  "transparency": {
+    "calculator_summary": "Ƙididdigar ka tana kan na'urarka sai dai idan ka shiga.",
+    "calculator_detail1": "Ana adana sakamakon a cikin mai bincike ka kawai, ba a sabobin mu ba.",
+    "calculator_detail2": "Idan ka shiga, ana amfani da tarihin ƙididdigewa don keɓance shawarwarin abincin ka.",
+    "calculator_detail3": "Ba ma raba bayanin gona ɗaya ɗaya da ɓangarori na uku.",
+    "calculator_detail4": "Zaka iya share tarihin ka a kowane lokaci daga bayanan ka.",
+    "signup_summary": "Muna tattara abin da ake buƙata kawai don ƙirƙira asusun ka.",
+    "signup_detail1": "Imel: ana amfani da shi kawai don shiga da sanarwar asusu masu mahimmanci.",
+    "signup_detail2": "Kalmar sirri: ana adana ta a matsayin hash mai aminci — ba za mu iya karantawa ba.",
+    "signup_detail3": "Cikakkun bayanan gona zaɓi ne kuma ana amfani da su kawai don keɓance shawarwarin abinci.",
+    "signup_detail4": "Ba ma sayar da bayananku ko amfani da su don talla.",
+    "hide": "Boye bayani",
+    "show": "Yadda muke amfani da wannan",
+    "policy_link": "Karanta cikakkiyar Manufar Sirri"
   }
 }

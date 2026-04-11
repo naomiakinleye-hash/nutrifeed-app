@@ -292,7 +292,8 @@
     "terms_agree": "I have read and agree to the",
     "terms_link": "Terms and Conditions",
     "and": "and",
-    "privacy_link": "Privacy Policy"
+    "privacy_link": "Privacy Policy",
+    "password_hint": "Minimum 8 characters"
   },
   "trust": {
     "title": "System Trust Status",
@@ -310,5 +311,20 @@
     "compliance_note": "This app is designed to comply with Nigeria Data Protection Act 2023.",
     "footer": "Your data is handled transparently.",
     "footer_link": "Read our Privacy Policy"
+  },
+  "transparency": {
+    "calculator_summary": "Your calculation stays on your device unless you are logged in.",
+    "calculator_detail1": "Results are saved to your browser only, not our servers, unless you have an account.",
+    "calculator_detail2": "If you log in, calculation history is used to personalise your feed recommendations.",
+    "calculator_detail3": "We never share individual farm data with third parties.",
+    "calculator_detail4": "You can delete your history any time from your profile.",
+    "signup_summary": "We collect only what is needed to create your account.",
+    "signup_detail1": "Email: used only for login and important account notifications.",
+    "signup_detail2": "Password: stored as a secure hash — we cannot read it.",
+    "signup_detail3": "Farm details are optional and used only to personalise feed recommendations.",
+    "signup_detail4": "We do not sell your data or use it for advertising.",
+    "hide": "Hide details",
+    "show": "How we use this",
+    "policy_link": "Read the full Privacy Policy"
   }
 }

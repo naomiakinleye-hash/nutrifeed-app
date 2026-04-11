@@ -286,13 +286,14 @@
     "account_details": "Awọn alaye akọọlẹ",
     "farm_details_label": "Awọn alaye oko",
     "farm_details_optional": "Aṣayan",
-    "farm_details_desc": "Fifi awọn alaye oko rẹ kun n ṣe iranlọwọ fun wa lati ṣe aṣa awọn iṣeduro rẹ.",
+    "farm_details_desc": "Fifi awọn alaye oko rẹ kun n ṣe iranlọwọ fun wa lati ṣe aṣa awọn iṣeduro rẹ. O le ṣafikun iwọnyi lẹhinna lati profaili rẹ.",
     "farm_type_label": "Iru oko",
     "birds_label": "Nọmba awọn eye",
     "terms_agree": "Mo ti ka ati gba si",
     "terms_link": "Awọn Ofin ati Ipo",
     "and": "ati",
-    "privacy_link": "Eto Asiri"
+    "privacy_link": "Eto Asiri",
+    "password_hint": "O kere ju awọn ohun kikọ 8"
   },
   "trust": {
     "title": "Ipo Igbẹkẹle Eto",
@@ -310,5 +311,20 @@
     "compliance_note": "Ohun elo yii ni a ṣe lati ni ibamu pelu Ofin Aabo Data Naijiria 2023.",
     "footer": "A n mu data rẹ ṣe ni gbangba.",
     "footer_link": "Ka Eto Asiri wa"
+  },
+  "transparency": {
+    "calculator_summary": "Iṣiro rẹ wa lori ẹrọ rẹ ayafi ti o ba wọle si akọọlẹ.",
+    "calculator_detail1": "Awọn abajade ti fipamọ ninu aṣàwákiri rẹ nikan, kii ṣe awọn olupin wa, ayafi ti o ba ni akọọlẹ.",
+    "calculator_detail2": "Ti o ba wọle, itan iṣiro n ṣe iranlọwọ lati ṣe aṣa awọn iṣeduro ounjẹ rẹ.",
+    "calculator_detail3": "A ko pin data oko kọọkan pẹlu awọn ẹgbẹ kẹta.",
+    "calculator_detail4": "O le pa itan rẹ rẹ nigbakugba lati profaili rẹ.",
+    "signup_summary": "A gba nikan ohun ti o nilo lati ṣẹda akọọlẹ rẹ.",
+    "signup_detail1": "Imeeli: a lo nikan fun iwọle ati awọn ifitonileti akọọlẹ pataki.",
+    "signup_detail2": "Ọrọigbaniwọle: ti fipamọ bi hash ti o ni aabo — a ko le ka rẹ.",
+    "signup_detail3": "Awọn alaye oko jẹ aṣayan ati lo nikan lati ṣe aṣa awọn iṣeduro ounjẹ.",
+    "signup_detail4": "A ko ta data rẹ tabi lo fun ipolowo.",
+    "hide": "Fi pamọ",
+    "show": "Bii a ṣe n lo eyi",
+    "policy_link": "Ka Eto Asiri ni kikun"
   }
 }

@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import ConsentBanner from './components/ConsentBanner';
 import FloatingMenu from './components/FloatingMenu';
 import ProtectedRoute from './components/ProtectedRoute';
+import LanguageSelect from './pages/LanguageSelect';
 import Home from './pages/Home';
 import DashboardPage from './pages/DashboardPage';
 import FeedCalculator from './pages/FeedCalculator';
@@ -17,8 +18,7 @@ import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import './App.css';
 
-// Navbar should not appear on login, signup, or terms pages
-const NO_NAV_ROUTES = ['/login', '/signup', '/terms'];
+const NO_NAV_ROUTES = ['/login', '/signup', '/terms', '/language'];
 
 function Layout() {
   const location = useLocation();
@@ -27,17 +27,16 @@ function Layout() {
   return (
     <>
       {!hideNav && <Navbar />}
-      <ConsentBanner />
+      {!hideNav && <ConsentBanner />}
       {!hideNav && <FloatingMenu />}
 
       <Routes>
-        {/* Public routes */}
-        <Route path="/login"   element={<Login />} />
-        <Route path="/signup"  element={<Signup />} />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/terms"   element={<Terms />} />
+        <Route path="/language" element={<LanguageSelect />} />
+        <Route path="/login"    element={<Login />} />
+        <Route path="/signup"   element={<Signup />} />
+        <Route path="/privacy"  element={<Privacy />} />
+        <Route path="/terms"    element={<Terms />} />
 
-        {/* Protected routes */}
         <Route path="/" element={
           <ProtectedRoute><Home /></ProtectedRoute>
         } />
