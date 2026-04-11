@@ -5,6 +5,7 @@ import SplashScreen from './components/SplashScreen';
 import Navbar from './components/Navbar';
 import ConsentBanner from './components/ConsentBanner';
 import FloatingMenu from './components/FloatingMenu';
+import NutriBot from './components/NutriBot';
 import ProtectedRoute from './components/ProtectedRoute';
 import LanguageSelect from './pages/LanguageSelect';
 import Home from './pages/Home';
@@ -29,6 +30,7 @@ function Layout() {
       {!hideNav && <Navbar />}
       {!hideNav && <ConsentBanner />}
       {!hideNav && <FloatingMenu />}
+      {!hideNav && <NutriBot />}
 
       <Routes>
         <Route path="/language" element={<LanguageSelect />} />
